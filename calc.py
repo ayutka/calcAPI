@@ -1,4 +1,5 @@
-#中置記法から後置記法へ変換
+#電卓の機能
+
 OPERATORS = {
     '(' : 1,
     ')' : 1,
@@ -8,7 +9,8 @@ OPERATORS = {
     '/' : 3,
     '^' : 3
 }
- 
+
+#中置記法から後置記法へ変換
 def moji_to_postfix(moji): #関数内で入力値を後置記法に直す
     stack = [] #演算子
     postfix = [] #完成形
@@ -93,10 +95,7 @@ def Calc(moji):
     return num_stack[0]
 
 
-#計算できない文字の判定 o
-#num1がpopできないとき o
-#エラーの処理
-if __name__ == "__main__":
+if __name__ == "__main__": #実質メイン関数
     moji = input().split(' ') #' 'で文字列を分割
     ans = Calc(moji)
     print(ans)
