@@ -5,7 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 app.add_middleware(
-    CORSMiddleware,
+    CORSMiddleware, #バックエンドからフロントエンドに通信の許可を出すもの
     allow_origins=["*"],
     allow_methods=["GET"],
     allow_headers=["*"],
