@@ -69,9 +69,8 @@ def RPN_Calc(RPN:list):
                     sp += 1
                     num_stack.append(num1*num2)
                 elif i == '/':
-                     if num2 == 0: #0は除算できない
-                        print('error')
-                        exit() #exitは関数 
+                     if num2 == 0: #0は除算できない                    
+                        return '[Error] can not warizann'
                      else:
                         sp += 1
                         num_stack.append(num1/num2)
@@ -82,7 +81,7 @@ def RPN_Calc(RPN:list):
                     else:
                         num_stack.append(num1**num2)  
             except IndexError as e:
-                return 'error'
+                return '[Error] IndexError'
         elif i in ['(', ')']: #カッコが来たら
             continue
         else:
@@ -91,7 +90,23 @@ def RPN_Calc(RPN:list):
             
     return num_stack[0]
 
+def to_infix(RPN_formula:list):
+    stack = []
+    print(RPN_formula)
+    for char in RPN_formula:
+        if char not in OPERATORS: #演算子が入っていなかったら
+            stack.append(char) #ansに数値を入れる
+        else:
+            if len(stack) == 0: #演算子を格納するstackが空の場合
+                stack.append(char) #とりあえず入れる
+            else:
+                num2 = stack.pop()
+                num1 = stack.pop()
+                stack.append(f"({num1} {char} {num2})")
+                
+    return stack
+
 if __name__ == "__main__": #実質メイン関数
-    moji = input().split(' ') #' 'で文字列を分割
-    ans = Calc(moji)
+    # moji = input().split(' ') #' 'で文字列を分割
+    ans = RPN_Calc(['1', '+', '2', '+', '3', '+', '4'])
     print(ans)
