@@ -107,6 +107,6 @@ def to_infix(RPN_formula: list):
 
 
 if __name__ == "__main__":  # 実質メイン関数
-    # moji = input().split(' ') #' 'で文字列を分割
-    ans = RPN_Calc(["1", "+", "2", "+", "3", "+", "4"])
+    moji = input().split(' ') #' 'で文字列を分割
+    ans = Calc(moji)
     print(ans)

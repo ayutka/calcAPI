@@ -46,5 +46,6 @@ def calc_make10(numbers: list) -> list:
 
 
 if __name__ == "__main__":  # 実質メイン関数
-    print(calc_make10(["4", "3", "2", "1"]))
-    
+    moji = input().split(' ') 
+    ans = calc_make10(moji)
+    print(ans)
